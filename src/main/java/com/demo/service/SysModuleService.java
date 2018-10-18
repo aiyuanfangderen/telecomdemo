@@ -1,112 +1,69 @@
 package com.demo.service;
 
-//import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
+import java.util.List;
 
 import com.demo.entity.SysMenu;
 import com.demo.entity.SysMenuModule;
 import com.demo.entity.SysModule;
 import com.demo.entity.SysModuleRole;
-import com.demo.mapper.SysModuleMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-
-@Service
-public class SysModuleService 
+//模块接口
+public interface SysModuleService 
 {
-   @Autowired
-   private SysModuleMapper sysModuleMapper;
+
+	public void insertModule(SysModule sysModule);
 	
-	public void insertModule(SysModule sysModule)
-	{
-		sysModuleMapper.insertModule(sysModule);
-	}
 	
 
-	public void insertModuleRole(SysModuleRole sysModuleRole)
-	{
-		sysModuleMapper.insertModuleRole(sysModuleRole);
-	}
+	public void insertModuleRole(SysModuleRole sysModuleRole);
 	
 	
-	public List<SysMenu> selectMenu(int id)
-	{
-		return sysModuleMapper.selectMenu(id);
-	}
 	
-   public List<SysMenu> selectMenu2()
-   {
-	   return sysModuleMapper.selectMenu2();
-   }
+	public List<SysMenu> selectMenu(int id);
+	
+	
+   public List<SysMenu> selectMenu2();
+   
 
-	public void updateModule(SysModule sysModule)
-	{
-		sysModuleMapper.updateModule(sysModule);
-	}
+	public void updateModule(SysModule sysModule);
 	
-	public List<SysMenu> selectOtherMenu(int id)
-	{
-		return sysModuleMapper.selectOtherMenu(id);
-	}
-	
-	
-	public void deleteMenu(int id)
-	{
-		sysModuleMapper.deleteMenu(id);
-	}
-	
-	
-	public void deleteModuleMenu(SysMenuModule sysMenuModules)
-	{
-		sysModuleMapper.deleteModuleMenu(sysMenuModules);
-	}
+	public List<SysMenu> selectOtherMenu(int id);
 	
 	
 	
-	public List<SysMenuModule> selectSameModule(int id)
-	{
-		return sysModuleMapper.selectSameModule(id);
-	}
-	
-	
-	public void deleteModule(int id)
-	{
-		sysModuleMapper.deleteModule(id);
-	}
-	
-	public void deleteModuleMenu2(int id)
-	{
-		sysModuleMapper.deleteModuleMenu2(id);
-	}
-	
-	public void deleteModuleRole(int id)
-	{
-		sysModuleMapper.deleteModuleRole(id);
-	}
-	
-	
-	public SysModuleRole selectModuleRoleReturnOne(int id)
-	{
-		return sysModuleMapper.selectModuleRoleReturnOne(id);
-	}
+	public void deleteMenu(int id);
 	
 	
 	
-	public SysMenuModule selectModuleMenuReturnOne(int id)
-	{
-		return sysModuleMapper.selectModuleMenuReturnOne(id);
-	}
+	public void deleteModuleMenu(SysMenuModule sysMenuModules);
 	
-	public List<SysModule> selectAllModule()
-	{
-		return sysModuleMapper.selectAllModule();
-	}
 	
-	public SysModule selectModuleInformation(int id)
-	{
-		return sysModuleMapper.selectModuleInformation(id);
-	}
+	
+	public List<SysMenuModule> selectSameModule(int id);
+	
+	
+	
+	public void deleteModule(int id);
+	
+	
+	public void deleteModuleMenu2(int id);
+	
+	
+	public void deleteModuleRole(int id);
+	
+	
+	
+	public SysModuleRole selectModuleRoleReturnOne(int id);
+	
+	
+	
+	
+	public SysMenuModule selectModuleMenuReturnOne(int id);
+	
+	
+	public List<SysModule> selectAllModule();
+	
+	
+	public SysModule selectModuleInformation(int id);
+	
 
-	
 }

@@ -1,17 +1,20 @@
-package Services;
+package com.demo.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.demo.dto.UserPosition;
 import com.demo.entity.SysDepartLeader;
 import com.demo.entity.SysDepartment;
 import com.demo.entity.SysUser;
 import com.demo.mapper.SysDepartmentMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-
+import com.demo.service.SysDepartmentService;
+//部门实现类
 @Service
-public class SysDepartmentService {
+public class SysDepartmentServiceImpl implements SysDepartmentService
+{
 
 	@Autowired
 	private SysDepartmentMapper sysDepartmentMapper;
@@ -137,9 +140,5 @@ public List<SysDepartment> selectDepartmentByDepId(int parent_dep_id)
 	return sysDepartmentMapper.selectDepartmentByDepId(parent_dep_id);
 }
 
-
-
-
-
-
+	
 }

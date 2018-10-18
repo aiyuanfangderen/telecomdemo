@@ -1,4 +1,9 @@
-package Services;
+package com.demo.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.demo.dto.NamePassword;
 import com.demo.dto.UserModule;
@@ -6,15 +11,12 @@ import com.demo.entity.SysRole;
 import com.demo.entity.SysUser;
 import com.demo.entity.SysUserRole;
 import com.demo.mapper.SysUserMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-
+import com.demo.service.SysUserService;
+//用户实现类
 @Service
-public class SysUserService 
+public class SysUserServiceImpl implements SysUserService
 {
-	
+
 	@Autowired
 	private SysUserMapper sysUserMapper;
 	
@@ -176,9 +178,4 @@ public class SysUserService
 	 {
 		 return sysUserMapper.selectAllUser();
 	 }
-	 
-	 
-
-	 
-	 
 }

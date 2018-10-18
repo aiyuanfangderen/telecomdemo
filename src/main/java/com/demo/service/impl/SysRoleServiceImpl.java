@@ -1,20 +1,21 @@
-package Services;
+package com.demo.service.impl;
 
-//import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.demo.dto.RoleConfigure;
 import com.demo.entity.SysModuleRole;
 import com.demo.entity.SysRole;
 import com.demo.entity.SysUserRole;
 import com.demo.mapper.SysRoleMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-
+import com.demo.service.SysRoleService;
+//角色实现类
 @Service
-public class SysRoleService 
+public class SysRoleServiceImpl implements SysRoleService
 {
+
 	@Autowired
 	private SysRoleMapper sysRoleMapper;
     
@@ -111,6 +112,5 @@ public class SysRoleService
 	{
 		return sysRoleMapper.selectRoleModuleByRoleReturnOne(role_id);
 	}
-	
 	
 }
