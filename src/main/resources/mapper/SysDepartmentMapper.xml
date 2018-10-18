@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.demo.mapper.SysDepartmentMapper" >
+
+     <!-- 插入部门数据 -->
+    <insert id="insertDepartment" parameterType="com.demo.entity.SysDepartment">
+     insert into sys_department(dep_number,dep_name,dep_alias,dep_english_name,dep_english_alias,dep_principal,dep_deputy,is_display,parent_dep_id,dep_status,dep_transceiver
+     ,dep_custom_id,dep_unity_code,dep_description,is_same_look,dep_area,create_time,update_time,create_oper,update_oper,dep_type) 
+     values(#{dep_number},#{dep_name},#{dep_alias},#{dep_english_name},#{dep_english_alias},#{dep_principal},
+     #{dep_deputy},#{is_display},#{parent_dep_id}
+     ,#{dep_status},#{dep_transceiver},#{dep_custom_id},#{dep_unity_code},#{dep_description},#{is_same_look},#{dep_area}
+     ,#{create_time},#{update_time},#{create_oper},#{update_oper},#{dep_type})
+    </insert>
+
+
+   <!-- 插入部门领导 -->
+   <insert id="insertDepartmentLeader" parameterType="com.demo.entity.SysDepartment">
+   insert into sys_depart_leader(dep_id,user_id,create_time,update_time,create_oper,update_oper) 
+   values(#{dep_id},#{user_id},#{create_time},#{update_time},#{create_oper},#{update_oper})
+   
+   </insert>
+
+<!-- 查询部门的顶级的名称和id -->
+    <select id="selectDepartmentZero" resultType="com.demo.entity.SysDepartment">
+        select * from sys_department where sys_department.parent_dep_id=0
+    
+    </select>
+
+
+
+
+<!-- 部门顶级通过递归查询它的下一级 -->
+
+<select id="seleceLowerDepartment" parameterType="int" resultType="com.demo.entity.SysDepartment">
+     select * from sys_department where sys_department.parent_dep_id=#{id}
+</select>
+
+
+
+<!-- 查询部门的所有信息，通过部门名称查询 -->
+
+<select id="selectDepartmentInformation" parameterType="String" resultType="com.demo.entity.SysDepartment">
+select * from sys_department where sys_department.dep_name=#{name}
+</select>
+
+
+<!-- 查询部门所有信息，通过部门id（不是主键）查找 -->
+<select id="selectDepartmentInformationById" parameterType="String" resultType="com.demo.entity.SysDepartment">
+select * from sys_department where sys_department.dep_custom_id=#{id}
+</select>
+
+<!-- 通过部门编号查询所有的信息 -->
+<select id="selectDepartmentInformationByNumber" parameterType="String" resultType="com.demo.entity.SysDepartment">
+select * from sys_department where sys_department.dep_unity_code=#{number}
+</select>
+
+
+
+<delete id="deleteDepartment" parameterType="int">
+delete from sys_department where sys_department.id=#{id}
+
+</delete>
+
+
+
+<select id="selectDepartIdByName" parameterType="String" resultType="int">
+  select sys_department.id from sys_department where sys_department.dep_name=#{dep_name}
+</select>
+
+<select id="selectUserId" parameterType="int" resultType="com.demo.entity.SysUser">
+select * from sys_user where sys_user.id=#{id}
+</select>
+
+
+<delete id="deleteDepartmentLeader" parameterType="int">
+delete from sys_depart_leader where sys_depart_leader.dep_id=#{dep_id}
+
+</delete>
+
+
+<!-- 修改部门的信息-->
+<update id="updateDepartment" parameterType="com.demo.entity.SysUser">
+ update sys_department set dep_number=#{dep_number},dep_name=#{dep_name},
+ dep_english_name=#{dep_english_name},dep_english_alias=#{dep_english_alias},
+ dep_principal=#{dep_principal},dep_deputy=#{dep_deputy},is_display=#{is_display},
+ parent_dep_id=#{parent_dep_id},dep_status=#{dep_status},dep_transceiver=#{dep_transceiver},
+ dep_custom_id=#{dep_custom_id},dep_unity_code=#{dep_unity_code},dep_description=#{dep_description}
+ ,is_same_look=#{is_same_look},dep_area=#{dep_area},create_time=#{create_time},update_time=#{update_time},create_oper=#{create_oper},
+ update_oper=#{update_oper},dep_type=#{dep_type} where sys_department.id=#{id}
+</update>
+
+<!-- 修改部门领导表的信息 -->
+<update id="updateDepartmentLeader" parameterType="com.demo.entity.SysDepartLeader">
+update sys_depart_leader set dep_id=#{dep_id},user_id=#{user_id}
+where sys_depart_leader.id=#{id}
+
+</update>
+
+
+
+<select id="selectDepartmentById" parameterType="int" resultType="com.demo.entity.SysDepartment">
+select * from sys_department where sys_department.id=#{id}
+</select>
+
+
+
+
+
+<select id="selectDepartmentLeaderId" parameterType="int" resultType="com.demo.entity.SysDepartLeader">
+
+ select * from sys_depart_leader where sys_depart_leader.user_id=#{user_id}
+ 
+</select>
+
+
+<update id="updatePrincipal" parameterType="com.demo.dto.UserPosition">
+update sys_department set dep_principal=#{name} where id=#{id}
+</update>
+
+
+<update id="updateDeputy" parameterType="com.demo.dto.UserPosition">
+update sys_department set dep_deputy=#{name} where id=#{id}
+</update>
+
+
+
+<delete id="deleteDepartmentLeader2" parameterType="com.demo.entity.SysDepartLeader">
+delete from sys_depart_leader where dep_id=#{dep_id} and user_id=#{user_id}
+
+</delete>
+
+
+<delete id="deleteDepartmentLeader3" parameterType="com.demo.entity.SysDepartLeader">
+delete from sys_depart_leader where user_id=#{user_id}
+</delete>
+
+
+<select id="selectDepartmentByDepId" parameterType="int" resultType="com.demo.entity.SysDepartment">
+select * from sys_department where sys_department.parent_dep_id=#{parent_dep_id}
+</select>
+
+
+
+
+</mapper>

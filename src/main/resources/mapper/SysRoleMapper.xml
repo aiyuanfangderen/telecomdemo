@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.demo.mapper.SysRoleMapper" >
+
+    <insert id="insertRole" parameterType="com.demo.entity.SysRole">
+     insert into sys_role(role_code,role_name,role_desc,is_builtin,create_time,update_time,create_oper,update_oper) 
+     values(#{role_code},#{role_name},#{role_desc},#{is_builtin},#{create_time},#{update_time},#{create_oper},#{update_oper})
+    </insert>
+
+
+     
+     <!-- 查询角色的id,名称 -->
+      <select id="selectRoleConfigure1" resultType="com.demo.dto.RoleConfigure">
+    select sys_role.id,sys_role.role_name
+    from sys_role 
+    </select>
+
+
+
+  <!-- 查询角色的所有信息 -->
+    <select id="selectRoleConfigure2" parameterType="int" resultType="com.demo.dto.RoleConfigure">
+    select sys_role.id,sys_role.role_code,sys_role.role_name,sys_role.role_desc,sys_role.is_builtin,
+    sys_user.id as user_id,sys_user.user_name,sys_department.dep_name,sys_department.dep_area
+    from sys_role,sys_user,sys_department,sys_user_role
+     where sys_role.id=#{id} and sys_user_role.user_id=sys_user.id and sys_user.dep_id=sys_department.id
+     and sys_role.id=sys_user_role.role_id
+    
+    </select>
+
+
+
+<!-- 删除角色用户表的数据 -->
+<delete id="deleteUserRole" parameterType="com.demo.entity.SysUserRole">
+   delete from sys_user_role where sys_user_role.user_id=#{user_id} and
+   sys_user_role.role_id=#{role_id}
+
+</delete>
+
+
+<!-- 删除角色模块表的数据 -->
+<delete id="deleteRoleModule" parameterType="com.demo.entity.SysModuleRole">
+delete from sys_module_role where sys_module_role.role_id=#{role_id}
+and sys_module_role.module_id=#{module_id}
+</delete>
+
+
+
+<select id="selectRoleByName" parameterType="String" resultType="com.demo.entity.SysRole">
+select * from sys_role where sys_role.role_name=#{role_name}
+</select>
+
+<update id="updateRole" parameterType="com.demo.entity.SysRole">
+ update sys_role set role_code=#{role_code},role_name=#{role_name},is_builtin=#{is_builtin}, role_desc=#{role_desc} where id=#{id}
+
+</update>
+
+
+<delete id="deleteRoleUserById" parameterType="int">
+delete from sys_user_role where sys_user_role.role_id=#{role_id}
+</delete>
+
+
+
+<select id="selectRoleUser" parameterType="int" resultType="com.demo.entity.SysUserRole">
+select * from sys_user_role where sys_user_role.role_id=#{id}
+</select>
+
+
+
+<delete id="deleteRole" parameterType="int">
+delete from sys_role where id=#{id}
+</delete>
+
+
+
+
+<insert id="insertModuleRole" parameterType="com.demo.entity.SysModuleRole">
+insert into sys_module_role(module_id,role_id) values(#{module_id},#{role_id})
+</insert>
+
+
+
+<delete id="deleteRoleModule2" parameterType="int">
+delete from sys_module_role where sys_module_role.role_id=#{role_id}
+</delete>
+
+
+
+<select id="selectAllRole" resultType="com.demo.entity.SysRole">
+select * from sys_role 
+</select>
+
+
+<select id="selectModuleRoleByModuleId" parameterType="int" resultType="com.demo.entity.SysModuleRole">
+select * from sys_module_role where sys_module_role.module_id=#{module_id}
+</select>
+
+
+<select id="selectRoleById" parameterType="int" resultType="com.demo.entity.SysRole">
+select * from sys_role where sys_role.id=#{id}
+</select>
+
+
+
+<select id="selectRoleModuleByRoleReturnOne" parameterType="int" resultType="com.demo.entity.SysModuleRole">
+select * from sys_module_role where sys_module_role.role_id=#{role_id} limit 1
+</select>
+
+
+
+ <!-- 批量插入角色用户表,已经测试，可以使用 
+<insert id="Test" parameterType="list">
+ 
+     insert into sys_user_role(user_id,role_id) 
+     values
+     <foreach collection="list" item="obj" index="index" separator=",">
+     (#{obj.user_id},#{obj.role_id})
+     
+     </foreach>
+
+</insert> -->
+
+
+
+
+
+
+</mapper>

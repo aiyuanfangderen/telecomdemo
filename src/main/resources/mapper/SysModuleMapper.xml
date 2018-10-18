@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.demo.mapper.SysModuleMapper" >
+
+    <insert id="insertModule" parameterType="com.demo.entity.SysModule">
+     insert into sys_module(module_code,module_name,default_query_scope,default_auth_type,create_time,update_time,create_oper,update_oper) 
+     values(#{module_code},#{module_name},#{default_query_scope},#{default_auth_type},#{create_time},#{update_time},#{create_oper},#{update_oper})
+    </insert>
+
+
+   <insert id="insertModuleRole" parameterType="com.demo.entity.SysModuleRole">
+      insert into sys_module_role(role_id,module_id,query_scope,create_time,update_time,create_oper,update_oper)
+      values(#{role_id},#{module_id},#{query_scope},#{create_time},#{update_time},#{create_oper},#{update_oper})
+   
+   
+   
+   </insert>
+   
+   <select id="selectModuleInformation" parameterType="int" resultType="com.demo.entity.SysModule">
+	select * from sys_module where id=#{id}
+	</select>
+
+   <!-- 查询顶级菜单，传入参数模块id -->
+   <select id="selectMenu" parameterType="int" resultType="com.demo.entity.SysMenu">
+   select sys_menu.id,sys_menu.menu_name,sys_menu.menu_english_name,sys_menu.menu_url,sys_menu.order_number,sys_menu.is_auth_check,
+   sys_menu.is_display,sys_menu.menu_parent_id,sys_menu.create_time,sys_menu.update_time
+   from sys_module_menu,sys_menu 
+   where sys_module_menu.module_id=#{id} and sys_module_menu.menu_id=sys_menu.id
+   
+   </select>
+
+
+  <!-- 查询顶级菜单，不传入任何菜单 -->
+   <select id="selectMenu2" resultType="com.demo.entity.SysMenu">
+   select sys_menu.id,sys_menu.menu_name 
+   from sys_menu where sys_menu.menu_parent_id=0
+</select>
+
+
+
+
+<!-- 查询其他的菜单的情况 -->
+ <select id="selectOtherMenu" parameterType="int" resultType="com.demo.entity.SysMenu">
+  select *
+   from sys_menu where sys_menu.menu_parent_id=#{id} 
+ 
+ 
+ </select>
+
+
+  <!-- 删除菜单时 -->
+<delete id="deleteMenu" parameterType="int">
+delete from sys_menu where sys_menu.id=#{id}
+
+</delete>
+
+
+
+<!-- 删除模块菜单关联数据 -->
+<delete id="deleteModuleMenu" parameterType="com.demo.entity.SysMenuModule">
+delete from sys_module_menu where sys_module_menu.module_id=#{module_id} and 
+sys_module_menu.menu_id=#{menu_id}
+
+</delete>
+
+
+
+<select id="selectSameModule" parameterType="int" resultType="com.demo.entity.SysMenuModule">
+select * from sys_module_menu where sys_module_menu.module_id=#{id}
+
+</select>
+
+
+<delete id="deleteModule" parameterType="int">
+delete from sys_module where sys_module.id=#{id}
+</delete>
+
+
+<delete id="deleteModuleMenu2" parameterType="int">
+delete from sys_module_menu where sys_module_menu.module_id=#{module_id}
+</delete>
+
+
+<delete id="deleteModuleRole" parameterType="int">
+delete from sys_module_role where sys_module_role.module_id=#{module_id}
+</delete>
+
+    <update id="updateModule" parameterType="com.demo.entity.SysModule">
+        update sys_module
+        set module_code=#{module_code},module_name=#{module_name},
+        default_query_scope=#{default_query_scope},default_auth_type=#{default_auth_type}
+        where id=#{id}
+    </update>
+
+
+<select id="selectModuleRoleReturnOne" parameterType="int" resultType="com.demo.entity.SysModuleRole">
+select * from sys_module_role where sys_module_role.module_id=#{id} limit 1
+</select>
+
+<select id="selectModuleMenuReturnOne" parameterType="int" resultType="com.demo.entity.SysMenuModule">
+select * from sys_module_menu where sys_module_menu.module_id=#{id} limit 1
+</select>
+
+
+<select id="selectAllModule" resultType="com.demo.entity.SysModule">
+select * from sys_module
+</select>
+
+</mapper>
