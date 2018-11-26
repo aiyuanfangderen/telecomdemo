@@ -3,6 +3,7 @@ package com.demo.exception;
 import com.demo.until.Result;
 import com.demo.until.ResultEnum;
 import com.demo.until.ResultUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ControllerAdvice
 public class GlobaExceptionHandler
 {
+	
 	private static final Logger logger = LoggerFactory.getLogger(GlobaExceptionHandler.class);
 
     @ExceptionHandler(value = Exception.class)

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.demo.mapper.CustomerBpmnMapper" >
+
+<!--根据传入的流程id查找所有的节点  -->
+<select id="selectAllNodeByProcessId" parameterType="int" resultType="com.demo.entity.MyNode">
+select * from my_node,my_process_node_relation 
+where my_process_node_relation.process_id=#{process_id} and
+my_process_node_relation.node_id=my_node.node_id
+</select>
+
+
+
+<!--查找所有任务关联表  -->
+<select id="selectNodeRelation" resultType="com.demo.entity.MyNodeRelation">
+     select * from my_node_relation where my_node_relation.currentcode in
+       <foreach collection="list" open="(" separator="," close=")" item="haha">
+            #{haha}
+      </foreach> 
+
+
+</select>
+
+
+
+<select id="selectNodeById" parameterType="int" resultType="String">
+select node_id_name from my_node where my_node.node_id=#{id}
+</select>
+
+
+</mapper>

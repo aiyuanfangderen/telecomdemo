@@ -1,0 +1,2 @@
+webpackJsonp([7],{ARoL:function(e,t,s){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n={render:function(){this.$createElement;this._self._c;return this._m(0)},staticRenderFns:[function(){var e=this.$createElement,t=this._self._c||e;return t("div",{staticClass:"dashboard"},[t("span",{staticClass:"welcome"},[this._v("欢迎登录")])])}]};var a=s("VU/8")({},n,!1,function(e){s("Aj2V")},"data-v-33ea3d40",null);t.default=a.exports},Aj2V:function(e,t){}});
+//# sourceMappingURL=7.7b807c4e2a363c80f8c8.js.map

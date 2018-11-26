@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<!-- <meta http-equiv="Content-Type" content="multipart/form-data;charset=utf-8" /> -->
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+    <form action="find" enctype="multipart/form-data" method="post">
+  
+      <input type="text" name="password"></input>
+      <input type="file" name="items_pic"/>
+      <input type="submit" value="提交"></input>
+      
+    </form>
+    
+    
+    
+   <img src="../images/59aa3aa7-896e-4c1d-a929-6c9b222b42c2.jpg"  width="112" height="112">
+ 
+   
+     <form action="saveFile" enctype="multipart/form-data" method="post">
+  
+      <input type="file" name="pic"/>
+      <input type="submit" value="提交文件"></input>
+      
+    </form>
+    
+ <form id="uploadForm" enctype="multipart/form-data" method="post">   
+  文件:<input id="file" type="file" name="file"/>
+  </form>
+  <button id="upload">上传文件</button>
+  
+
+
+    
+    
+<script>    
+
+$(function ()
+		{    
+	        $("#upload").click(function () 
+			{       
+	        	alert('输出');
+		     var formData = new FormData($('#uploadForm')[0]); 
+		     alert(formData)
+		$.ajax(
+				{             
+			       type: 'post',      
+			       url: "/excel/insertSysCheckStandard",     
+			       data: formData,             
+			       cache: false,              
+			        processData: false,          
+			       contentType: false,   
+			       success: function (xhr)
+                     {
+                      alert(xhr);
+                     }
+		        });  
+	     });
+		});
+		
+	
+
+
+    
+    
+</script>   
+    
+    
+    
+    
+  <!--     用于播放视频 -->
+   <!--  <video width="500" height="500" controls="controls">
+     <source src="../images/1-1 课程导学 .mp4" type="video/mp4">
+          您的浏览器不支持 video 标签。
+    </video> -->
+    
+   
+            <!--   <td>
+              <img src="/pic/${item.pic }" width=100 height=100 />
+              </td> -->
+</body>
+</html>
