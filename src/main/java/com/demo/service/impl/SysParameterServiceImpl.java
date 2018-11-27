@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demo.dto.ParameterIdName;
-import com.demo.entity.SysParameter;
-import com.demo.entity.SysParameterType;
 import com.demo.mapper.SysParameterMapper;
+import com.demo.po.SysParameter;
+import com.demo.po.SysParameterType;
 import com.demo.service.SysParameterService;
 @Service
 public class SysParameterServiceImpl implements SysParameterService{

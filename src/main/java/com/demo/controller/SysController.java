@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.demo.dto.UserDepartment;
 import com.demo.dto.UserPosition;
-import com.demo.entity.*;
+import com.demo.po.*;
 import com.demo.service.*;
 import com.demo.until.Result;
 import com.demo.until.ResultUtil;

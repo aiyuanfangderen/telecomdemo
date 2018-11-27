@@ -2,10 +2,10 @@ package com.demo.service;
 
 import java.util.List;
 
-import com.demo.entity.SysMenu;
-import com.demo.entity.SysMenuModule;
-import com.demo.entity.SysModule;
-import com.demo.entity.SysModuleRole;
+import com.demo.po.SysMenu;
+import com.demo.po.SysMenuModule;
+import com.demo.po.SysModule;
+import com.demo.po.SysModuleRole;
 //模块接口
 public interface SysModuleService 
 {

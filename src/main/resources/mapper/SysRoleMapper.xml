@@ -3,7 +3,7 @@
 
 <mapper namespace="com.demo.mapper.SysRoleMapper" >
 
-    <insert id="insertRole" parameterType="com.demo.entity.SysRole">
+    <insert id="insertRole" parameterType="com.demo.po.SysRole">
      insert into sys_role(role_code,role_name,role_desc,is_builtin,create_time,update_time,create_oper,update_oper) 
      values(#{role_code},#{role_name},#{role_desc},#{is_builtin},#{create_time},#{update_time},#{create_oper},#{update_oper})
     </insert>
@@ -31,7 +31,7 @@
 
 
 <!-- 删除角色用户表的数据 -->
-<delete id="deleteUserRole" parameterType="com.demo.entity.SysUserRole">
+<delete id="deleteUserRole" parameterType="com.demo.po.SysUserRole">
    delete from sys_user_role where sys_user_role.user_id=#{user_id} and
    sys_user_role.role_id=#{role_id}
 
@@ -39,18 +39,18 @@
 
 
 <!-- 删除角色模块表的数据 -->
-<delete id="deleteRoleModule" parameterType="com.demo.entity.SysModuleRole">
+<delete id="deleteRoleModule" parameterType="com.demo.po.SysModuleRole">
 delete from sys_module_role where sys_module_role.role_id=#{role_id}
 and sys_module_role.module_id=#{module_id}
 </delete>
 
 
 
-<select id="selectRoleByName" parameterType="String" resultType="com.demo.entity.SysRole">
+<select id="selectRoleByName" parameterType="String" resultType="com.demo.po.SysRole">
 select * from sys_role where sys_role.role_name=#{role_name}
 </select>
 
-<update id="updateRole" parameterType="com.demo.entity.SysRole">
+<update id="updateRole" parameterType="com.demo.po.SysRole">
  update sys_role set role_code=#{role_code},role_name=#{role_name},is_builtin=#{is_builtin}, role_desc=#{role_desc} where id=#{id}
 
 </update>
@@ -62,7 +62,7 @@ delete from sys_user_role where sys_user_role.role_id=#{role_id}
 
 
 
-<select id="selectRoleUser" parameterType="int" resultType="com.demo.entity.SysUserRole">
+<select id="selectRoleUser" parameterType="int" resultType="com.demo.po.SysUserRole">
 select * from sys_user_role where sys_user_role.role_id=#{id}
 </select>
 
@@ -75,7 +75,7 @@ delete from sys_role where id=#{id}
 
 
 
-<insert id="insertModuleRole" parameterType="com.demo.entity.SysModuleRole">
+<insert id="insertModuleRole" parameterType="com.demo.po.SysModuleRole">
 insert into sys_module_role(module_id,role_id) values(#{module_id},#{role_id})
 </insert>
 
@@ -87,23 +87,23 @@ delete from sys_module_role where sys_module_role.role_id=#{role_id}
 
 
 
-<select id="selectAllRole" resultType="com.demo.entity.SysRole">
+<select id="selectAllRole" resultType="com.demo.po.SysRole">
 select * from sys_role 
 </select>
 
 
-<select id="selectModuleRoleByModuleId" parameterType="int" resultType="com.demo.entity.SysModuleRole">
+<select id="selectModuleRoleByModuleId" parameterType="int" resultType="com.demo.po.SysModuleRole">
 select * from sys_module_role where sys_module_role.module_id=#{module_id}
 </select>
 
 
-<select id="selectRoleById" parameterType="int" resultType="com.demo.entity.SysRole">
+<select id="selectRoleById" parameterType="int" resultType="com.demo.po.SysRole">
 select * from sys_role where sys_role.id=#{id}
 </select>
 
 
 
-<select id="selectRoleModuleByRoleReturnOne" parameterType="int" resultType="com.demo.entity.SysModuleRole">
+<select id="selectRoleModuleByRoleReturnOne" parameterType="int" resultType="com.demo.po.SysModuleRole">
 select * from sys_module_role where sys_module_role.role_id=#{role_id} limit 1
 </select>
 

@@ -2,8 +2,8 @@ package com.demo.service;
 
 import java.util.List;
 
-import com.demo.entity.MyNode;
-import com.demo.entity.MyNodeRelation;
+import com.demo.po.MyNode;
+import com.demo.po.MyNodeRelation;
 
 public interface CustomerBpmnService {
 

@@ -29,8 +29,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.demo.entity.MyNode;
-import com.demo.entity.MyNodeRelation;
+import com.demo.po.MyNode;
+import com.demo.po.MyNodeRelation;
 import com.demo.service.CustomerBpmnService;
 import com.demo.until.Result;
 import com.demo.until.ResultUtil;

@@ -1,4 +1,4 @@
-package com.demo.entity;
+package com.demo.po;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

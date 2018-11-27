@@ -1,9 +1,10 @@
 package com.demo.mapper;
 //部门的mapper接口
 import com.demo.dto.UserPosition;
-import com.demo.entity.SysDepartLeader;
-import com.demo.entity.SysDepartment;
-import com.demo.entity.SysUser;
+import com.demo.po.SysDepartLeader;
+import com.demo.po.SysDepartment;
+import com.demo.po.SysUser;
+
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

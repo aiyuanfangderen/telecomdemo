@@ -2,8 +2,8 @@ package com.demo.mapper;
 
 import java.util.List;
 
-import com.demo.entity.MyNode;
-import com.demo.entity.MyNodeRelation;
+import com.demo.po.MyNode;
+import com.demo.po.MyNodeRelation;
 
 public interface CustomerBpmnMapper {
 

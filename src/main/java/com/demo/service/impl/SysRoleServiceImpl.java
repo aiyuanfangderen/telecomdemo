@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demo.dto.RoleConfigure;
-import com.demo.entity.SysModuleRole;
-import com.demo.entity.SysRole;
-import com.demo.entity.SysUserRole;
 import com.demo.mapper.SysRoleMapper;
+import com.demo.po.SysModuleRole;
+import com.demo.po.SysRole;
+import com.demo.po.SysUserRole;
 import com.demo.service.SysRoleService;
 //角色实现类
 @Service

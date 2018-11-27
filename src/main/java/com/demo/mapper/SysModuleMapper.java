@@ -1,10 +1,10 @@
 package com.demo.mapper;
-//模块的mapper接口
-import com.demo.entity.SysMenu;
-import com.demo.entity.SysMenuModule;
-import com.demo.entity.SysModule;
-import com.demo.entity.SysModuleRole;
 import org.springframework.stereotype.Repository;
+
+import com.demo.po.SysMenu;
+import com.demo.po.SysMenuModule;
+import com.demo.po.SysModule;
+import com.demo.po.SysModuleRole;
 
 import java.util.List;
 

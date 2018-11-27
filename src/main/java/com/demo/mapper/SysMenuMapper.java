@@ -1,8 +1,8 @@
 package com.demo.mapper;
-//菜单的mapper接口
-import com.demo.entity.SysMenu;
-import com.demo.entity.SysMenuModule;
 import org.springframework.stereotype.Repository;
+
+import com.demo.po.SysMenu;
+import com.demo.po.SysMenuModule;
 
 import java.util.List;
 

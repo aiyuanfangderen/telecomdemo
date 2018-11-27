@@ -3,7 +3,7 @@
 
 <mapper namespace="com.demo.mapper.SysUserMapper" >
 
-    <insert id="insertUser" parameterType="com.demo.entity.SysUser">
+    <insert id="insertUser" parameterType="com.demo.po.SysUser">
      insert into sys_user(user_name,user_password,real_name,user_code,user_level,user_position,dep_id,is_company_leader,order_number
      ,user_email,stauts,create_time,update_time,create_oper,update_oper) 
      values(#{user_name},#{user_password},#{real_name},#{user_code},#{user_level},#{user_position},#{dep_id},#{is_company_leader},#{order_number}
@@ -11,19 +11,19 @@
     </insert>
 
 
-     <insert id="insertUserRole" parameterType="com.demo.entity.SysUserRole">
+     <insert id="insertUserRole" parameterType="com.demo.po.SysUserRole">
      insert into sys_user_role(user_id,role_id,create_time,update_time,create_oper,update_oper) 
      values(#{user_id},#{role_id},#{create_time},#{update_time},#{create_oper},#{update_oper})
     </insert>
 
-    <update id="updateUser" parameterType="com.demo.entity.SysUser">
+    <update id="updateUser" parameterType="com.demo.po.SysUser">
     update sys_user set user_name=#{user_name},user_password=#{user_password},real_name=#{real_name},
     user_code=#{user_code},user_level=#{user_level},user_position=#{user_position},
     dep_id=#{dep_id},is_company_leader=#{is_company_leader},order_number=#{order_number}
     ,user_email=#{user_email},stauts=#{stauts} where id=#{id}
     </update>
 
-	<select id="selectUserByRealUsername" parameterType="com.demo.entity.SysUser" resultType="com.demo.entity.SysUser">
+	<select id="selectUserByRealUsername" parameterType="com.demo.po.SysUser" resultType="com.demo.po.SysUser">
 	select * from sys_user where sys_user.user_name=#{user_name} and sys_user.real_name=#{real_name}
 	</select>
    
@@ -41,29 +41,29 @@
   
 
 <!-- 按账号查找 -->
-  <select id="selectUserByName" parameterType="String" resultType="com.demo.entity.SysUser">
+  <select id="selectUserByName" parameterType="String" resultType="com.demo.po.SysUser">
   select * from sys_user where sys_user.user_name=#{username}
   </select>
 
 
 <!-- 按名称查找 -->
- <select id="selectUserByRealName" parameterType="String" resultType="com.demo.entity.SysUser">
+ <select id="selectUserByRealName" parameterType="String" resultType="com.demo.po.SysUser">
  select * from sys_user where sys_user.real_name=#{realname}
  </select>
 
 
 <!-- 删除人员，只是将人员的状态设置为否的状态 -->
-<update id="updateUserState" parameterType="com.demo.entity.SysUser">
+<update id="updateUserState" parameterType="com.demo.po.SysUser">
     update sys_user set sys_user.stauts=#{stauts} where sys_user.id=#{id}
 </update>
 
 
-<select id="selectUserByDepId" parameterType="int" resultType="com.demo.entity.SysUser">
+<select id="selectUserByDepId" parameterType="int" resultType="com.demo.po.SysUser">
    select * from sys_user where sys_user.dep_id=#{dep_id}
 </select>
 
 
-<update id="updateUserDepId" parameterType="com.demo.entity.SysUser">
+<update id="updateUserDepId" parameterType="com.demo.po.SysUser">
 update sys_user set dep_id=0 where id=#{id}
 </update>
 
@@ -72,7 +72,7 @@ delete from sys_user_role where sys_user_role.user_id=#{user_id}
 </delete>
 
 
-<select id="selectUserById" parameterType="int" resultType="com.demo.entity.SysUser">
+<select id="selectUserById" parameterType="int" resultType="com.demo.po.SysUser">
    select * from sys_user where sys_user.id=#{id}
 </select>
 
@@ -84,64 +84,64 @@ update sys_user set user_position=null where id=#{id}
 
 
 
-<update id="updateUserPosition2" parameterType="com.demo.entity.SysUser">
+<update id="updateUserPosition2" parameterType="com.demo.po.SysUser">
 update sys_user set user_position=#{user_position} where id=#{id}
 </update>
 
 
-<select id="selectAllUser" resultType="com.demo.entity.SysUser">
+<select id="selectAllUser" resultType="com.demo.po.SysUser">
 select * from sys_user
 </select>
 
 
-<select id="selectUserByDepIdReturnOne" parameterType="com.demo.entity.SysUser" resultType="com.demo.entity.SysUser">
+<select id="selectUserByDepIdReturnOne" parameterType="com.demo.po.SysUser" resultType="com.demo.po.SysUser">
 select * from sys_user where sys_user.dep_id=#{dep_id} limit 1
 </select>
 
 
-<select id="selectUserOnDepidNull" resultType="com.demo.entity.SysUser">
+<select id="selectUserOnDepidNull" resultType="com.demo.po.SysUser">
 select * from sys_user where sys_user.dep_id is NULL
 </select>
 
 
 
-<select id="selectUserRoleByUserId" parameterType="int" resultType="com.demo.entity.SysUserRole">
+<select id="selectUserRoleByUserId" parameterType="int" resultType="com.demo.po.SysUserRole">
 select * from sys_user_role where sys_user_role.user_id=#{user_id}
 </select>
 
 
-<select id="selectUserRoleByRoleId" parameterType="int" resultType="com.demo.entity.SysUserRole">
+<select id="selectUserRoleByRoleId" parameterType="int" resultType="com.demo.po.SysUserRole">
 select * from sys_user_role where sys_user_role.role_id=#{role_id}
 </select>
 
 
 
-<select id="selectUserRoleByUserIdReturnOne" parameterType="int" resultType="com.demo.entity.SysUserRole">
+<select id="selectUserRoleByUserIdReturnOne" parameterType="int" resultType="com.demo.po.SysUserRole">
 select * from sys_user_role where sys_user_role.user_id=#{user_id} limit 1
 </select>
 
 
-<select id="selectUserRoleByRoleIdReturnOne" parameterType="int" resultType="com.demo.entity.SysUserRole">
+<select id="selectUserRoleByRoleIdReturnOne" parameterType="int" resultType="com.demo.po.SysUserRole">
 select * from sys_user_role where sys_user_role.role_id=#{role_id} limit 1
 </select>
 
 
-<update id="updateUserDepIdById" parameterType="com.demo.entity.SysUser">
+<update id="updateUserDepIdById" parameterType="com.demo.po.SysUser">
 update sys_user set sys_user.dep_id=#{dep_id} where sys_user.id=#{id}
 </update>
 
-<select id="selectUserByPasswordUsername" parameterType="com.demo.dto.NamePassword" resultType="com.demo.entity.SysUser">
+<select id="selectUserByPasswordUsername" parameterType="com.demo.dto.NamePassword" resultType="com.demo.po.SysUser">
 select * from sys_user where user_password=#{password} and user_name=#{username}
 </select>
 
 
-<select id="selectRoleByUserName" parameterType="String" resultType="com.demo.entity.SysUserRole">
+<select id="selectRoleByUserName" parameterType="String" resultType="com.demo.po.SysUserRole">
 select sys_role.* from sys_user,sys_role,sys_user_role where sys_user.user_name=#{user_name} and sys_user.id=sys_user_role.user_id
 and sys_user_role.role_id=sys_role.id
 </select>
 
 
-<select id="selectUserNameId" resultType="com.demo.entity.SysUser">
+<select id="selectUserNameId" resultType="com.demo.po.SysUser">
 select * from sys_user where sys_user.stauts=0
 </select>
 

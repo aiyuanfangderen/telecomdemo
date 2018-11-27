@@ -1,7 +1,7 @@
 package com.demo.service;
 
-import com.demo.entity.SysCheckStandard;
-import com.demo.entity.SysCheckStdSchedule;
+import com.demo.po.SysCheckStandard;
+import com.demo.po.SysCheckStdSchedule;
 
 public interface ExcelService {
 

@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.demo.dto.UserPosition;
-import com.demo.entity.SysDepartLeader;
-import com.demo.entity.SysDepartment;
-import com.demo.entity.SysUser;
+import com.demo.po.SysDepartLeader;
+import com.demo.po.SysDepartment;
+import com.demo.po.SysUser;
 //部门接口
 public interface SysDepartmentService
 {

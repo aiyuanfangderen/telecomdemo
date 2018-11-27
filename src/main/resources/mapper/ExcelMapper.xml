@@ -4,7 +4,7 @@
 <mapper namespace="com.demo.mapper.ExcelMapper" >
 
 <!-- 插入excel数据到检查标准 -->
-<insert id="insertChectStandard" parameterType="com.demo.entity.SysCheckStandard">
+<insert id="insertChectStandard" parameterType="com.demo.po.SysCheckStandard">
 insert into sys_check_standard(sample_client,business_type,sample_sup_class,sample_class,
 sample_type,check_norm,check_period,create_time,update_time,create_oper,update_oper)
 values(#{sample_client},#{business_type},#{sample_sup_class},#{sample_class},#{sample_type},
@@ -13,7 +13,7 @@ values(#{sample_client},#{business_type},#{sample_sup_class},#{sample_class},#{s
 
 
 
-<insert id="insertChectStdSchedule" parameterType="com.demo.entity.SysCheckStdSchedule">
+<insert id="insertChectStdSchedule" parameterType="com.demo.po.SysCheckStdSchedule">
 insert into sys_check_std_schedule(super_id,order_number,check_proj_type,check_sup_class,
 check_class,check_unit,standard_request,standard_day,dev_name,dev_type,dev_code,create_time
 ,update_time,create_oper,update_oper)

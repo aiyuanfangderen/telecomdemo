@@ -7,13 +7,13 @@
 select id,parm_name as name from sys_parameter 
 </select>
    <!--通过id查找参数的详细信息  -->
-<select id="selectParameterById" parameterType="int" resultType="com.demo.entity.SysParameter">
+<select id="selectParameterById" parameterType="int" resultType="com.demo.po.SysParameter">
 select * from sys_parameter where id=#{id}
 
 </select>
 
 <!-- 插入参数的信息 -->
-<insert id="insertParameter" parameterType="com.demo.entity.SysParameter">
+<insert id="insertParameter" parameterType="com.demo.po.SysParameter">
 insert into sys_parameter(parm_type,parm_value,parm_name,parm_name_en,is_show,
 create_time,update_time,create_oper,update_oper) 
 values(#{parm_type},#{parm_value},#{parm_name},#{parm_name_en},
@@ -21,7 +21,7 @@ values(#{parm_type},#{parm_value},#{parm_name},#{parm_name_en},
 </insert>
 
 <!--插入时，判断参数的参数类型是否已经存在了，存在则插入  -->
-<select id="selectParameterType" parameterType="String" resultType="com.demo.entity.SysParameter">
+<select id="selectParameterType" parameterType="String" resultType="com.demo.po.SysParameter">
 select * from sys_parameter where parm_type=#{parm_type} limit 1
 </select>
 
@@ -30,7 +30,7 @@ select * from sys_parameter where parm_type=#{parm_type} limit 1
 
 
 <!--更新参数的信息  -->
-<update id="updateParameter" parameterType="com.demo.entity.SysParameter">
+<update id="updateParameter" parameterType="com.demo.po.SysParameter">
 update sys_parameter set parm_type=#{parm_type},parm_value=#{parm_value},parm_name=#{parm_name},
 parm_name_en=#{parm_name_en},is_show=#{is_show},create_time=#{create_time},update_time=#{update_time},
 create_oper=#{create_oper},update_oper=#{update_oper} where id=#{id}
@@ -47,12 +47,12 @@ delete from sys_parameter where id=#{id}
 
 
 <!--查找所有的参数类型  -->
-<select id="selectAllParameterType" resultType="com.demo.entity.SysParameterType">
+<select id="selectAllParameterType" resultType="com.demo.po.SysParameterType">
 select * from sys_parm_type
 </select>
 
 <!--通过参数的类型名称查找参数  -->
-<select id="selectParameterByParameterTypeName" parameterType="String" resultType="com.demo.entity.SysParameter">
+<select id="selectParameterByParameterTypeName" parameterType="String" resultType="com.demo.po.SysParameter">
 select * from sys_parameter where sys_parameter.parm_type=#{parm_type}
 </select>
 
@@ -60,7 +60,7 @@ select * from sys_parameter where sys_parameter.parm_type=#{parm_type}
 
 
 <!-- 插入参数类型的信息 -->
-<insert id="insertParameterType" parameterType="com.demo.entity.SysParameterType">
+<insert id="insertParameterType" parameterType="com.demo.po.SysParameterType">
 insert into sys_parm_type(parm_type_name,parm_type_name_cn,
 create_time,update_time,create_oper,update_oper) 
 values(#{parm_type_name},#{parm_type_name_cn},#{create_time},
@@ -69,7 +69,7 @@ values(#{parm_type_name},#{parm_type_name_cn},#{create_time},
 
 
 <!--更新参数类型的信息  -->
-<update id="updateParameterType" parameterType="com.demo.entity.SysParameterType">
+<update id="updateParameterType" parameterType="com.demo.po.SysParameterType">
 update sys_parm_type set parm_type_name=#{parm_type_name},
 parm_type_name_cn=#{parm_type_name_cn},
 create_time=#{create_time},update_time=#{update_time},
@@ -84,7 +84,7 @@ delete from sys_parm_type where id=#{id}
 
 
 <!-- 删除参数类型信息时，判断参数类型是否和下面的参数相关联，关联则不让删除 -->
-<select id="selectParameterByTypeId" parameterType="int" resultType="com.demo.entity.SysParameter">
+<select id="selectParameterByTypeId" parameterType="int" resultType="com.demo.po.SysParameter">
 select * from sys_parm_type,sys_parameter
 where sys_parm_type.id=#{id} and sys_parm_type.parm_type_name=sys_parameter.parm_type limit 1
 </select>

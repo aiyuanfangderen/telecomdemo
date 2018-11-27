@@ -4,9 +4,9 @@ import java.util.List;
 
 import com.demo.dto.NamePassword;
 import com.demo.dto.UserModule;
-import com.demo.entity.SysRole;
-import com.demo.entity.SysUser;
-import com.demo.entity.SysUserRole;
+import com.demo.po.SysRole;
+import com.demo.po.SysUser;
+import com.demo.po.SysUserRole;
 //用户接口
 public interface SysUserService
 {

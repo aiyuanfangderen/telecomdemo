@@ -3,8 +3,8 @@ package com.demo.mapper;
 import java.util.List;
 
 import com.demo.dto.ParameterIdName;
-import com.demo.entity.SysParameter;
-import com.demo.entity.SysParameterType;
+import com.demo.po.SysParameter;
+import com.demo.po.SysParameterType;
 
 public interface SysParameterMapper {
 

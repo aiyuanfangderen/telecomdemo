@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.demo.dto.UserPosition;
-import com.demo.entity.SysDepartLeader;
-import com.demo.entity.SysDepartment;
-import com.demo.entity.SysUser;
 import com.demo.mapper.SysDepartmentMapper;
+import com.demo.po.SysDepartLeader;
+import com.demo.po.SysDepartment;
+import com.demo.po.SysUser;
 import com.demo.service.SysDepartmentService;
 //部门实现类
 @Service

@@ -19,8 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.demo.dto.NamePassword;
-import com.demo.entity.SysRole;
-import com.demo.entity.SysUser;
+import com.demo.po.SysRole;
+import com.demo.po.SysUser;
 import com.demo.service.SysUserService;
 //shire的认证授权
 @Controller

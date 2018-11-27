@@ -3,9 +3,9 @@ package com.demo.service;
 import java.util.List;
 
 import com.demo.dto.RoleConfigure;
-import com.demo.entity.SysModuleRole;
-import com.demo.entity.SysRole;
-import com.demo.entity.SysUserRole;
+import com.demo.po.SysModuleRole;
+import com.demo.po.SysRole;
+import com.demo.po.SysUserRole;
 //角色接口
 public interface SysRoleService 
 {

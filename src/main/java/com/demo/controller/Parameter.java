@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.dto.ParameterIdName;
-import com.demo.entity.SysModule;
-import com.demo.entity.SysParameter;
-import com.demo.entity.SysParameterType;
+import com.demo.po.SysModule;
+import com.demo.po.SysParameter;
+import com.demo.po.SysParameterType;
 import com.demo.service.SysParameterService;
 import com.demo.until.Result;
 import com.demo.until.ResultUtil;

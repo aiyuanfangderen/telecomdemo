@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demo.dto.UserDepartment;
-import com.demo.entity.SysDepartment;
-import com.demo.entity.SysModuleRole;
-import com.demo.entity.SysRole;
-import com.demo.entity.SysUser;
-import com.demo.entity.SysUserRole;
+import com.demo.po.SysDepartment;
+import com.demo.po.SysModuleRole;
+import com.demo.po.SysRole;
+import com.demo.po.SysUser;
+import com.demo.po.SysUserRole;
 import com.demo.service.SysDepartmentService;
 import com.demo.service.SysMenuService;
 import com.demo.service.SysModuleService;

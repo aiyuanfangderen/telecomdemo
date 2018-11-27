@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.demo.entity.SysMenu;
-import com.demo.entity.SysMenuModule;
 import com.demo.mapper.SysMenuMapper;
+import com.demo.po.SysMenu;
+import com.demo.po.SysMenuModule;
 import com.demo.service.SysMenuService;
 //菜单实现类
 @Service

@@ -3,7 +3,7 @@
 
 <mapper namespace="com.demo.mapper.SysMenuMapper" >
 
-     <insert id="insertMenu" parameterType="com.demo.entity.SysMenu">
+     <insert id="insertMenu" parameterType="com.demo.po.SysMenu">
      insert into sys_menu(menu_name,menu_english_name,menu_url,order_number,is_auth_check,is_display,menu_parent_id,create_time,update_time,create_oper
      ,update_oper,menu_type,menu_icon) 
      values(#{menu_name},#{menu_english_name},#{menu_url},#{order_number},#{is_auth_check},#{is_display}
@@ -15,7 +15,7 @@
 
 
   <!--插入菜单模块表-->
-    <insert id="insertMenuModule" parameterType="com.demo.entity.SysMenuModule">
+    <insert id="insertMenuModule" parameterType="com.demo.po.SysMenuModule">
      insert into sys_module_menu(module_id,menu_id,create_time,update_time,create_oper,update_oper) 
      values(#{module_id},#{menu_id},#{create_time},#{update_time},#{create_oper},#{update_oper})
     
@@ -24,21 +24,21 @@
 
 
 <!-- 查找上一级菜单属性，所有直接返回对象，对象中存在上级菜单属性 -->
-<select id="selectParentMenu" parameterType="int" resultType="com.demo.entity.SysMenu">
+<select id="selectParentMenu" parameterType="int" resultType="com.demo.po.SysMenu">
 select * from sys_menu where sys_menu.id=#{id}
 </select>
 
 
 
 <!-- 查找同级菜单 -->
-<select id="selectSameMenu" parameterType="int" resultType="com.demo.entity.SysMenu">
+<select id="selectSameMenu" parameterType="int" resultType="com.demo.po.SysMenu">
 select * from sys_menu where sys_menu.menu_parent_id=#{id}
 
 </select>
 
 
 <!-- 用已经查到菜单id来看是否在模块菜单id中 -->
-<select id="selectIsModuleMenu" parameterType="com.demo.entity.SysMenuModule" resultType="com.demo.entity.SysMenuModule">
+<select id="selectIsModuleMenu" parameterType="com.demo.po.SysMenuModule" resultType="com.demo.po.SysMenuModule">
    select * from sys_module_menu where sys_module_menu.module_id=#{module_id} and sys_module_menu.menu_id=#{menu_id}
 
 </select>
@@ -46,28 +46,28 @@ select * from sys_menu where sys_menu.menu_parent_id=#{id}
 
 
 <!-- 查找父级的菜单 -->
-<select id="selectParentMenuId" parameterType="int" resultType="com.demo.entity.SysMenu">
+<select id="selectParentMenuId" parameterType="int" resultType="com.demo.po.SysMenu">
 select * from sys_menu where sys_menu.id=#{id}
 
 </select>
 
 
 
-<select id="selectAllMenu" resultType="com.demo.entity.SysMenu">
+<select id="selectAllMenu" resultType="com.demo.po.SysMenu">
 select * from sys_menu
 
 </select>
 
 
 
-<select id="selectMenuById" parameterType="int" resultType="com.demo.entity.SysMenu">
+<select id="selectMenuById" parameterType="int" resultType="com.demo.po.SysMenu">
 
 select * from sys_menu where sys_menu.id=#{id}
 </select>
 
 
 
-<select id="selectUserMenuList" parameterType="int" resultType="com.demo.entity.SysMenu">
+<select id="selectUserMenuList" parameterType="int" resultType="com.demo.po.SysMenu">
 select distinct sys_menu.* from sys_user,sys_user_role,sys_role,sys_module_role,sys_module,sys_module_menu,sys_menu
 where sys_user.id=#{id} and sys_user.id=sys_user_role.user_id and sys_user_role.role_id=sys_role.id
 and sys_role.id=sys_module_role.role_id and sys_module_role.module_id=sys_module.id and sys_module.id=sys_module_menu.module_id
@@ -76,17 +76,17 @@ and sys_module_menu.menu_id=sys_menu.id
 
 
 
-<select id="selectMenuInModuleMune" parameterType="com.demo.entity.SysMenuModule" resultType="com.demo.entity.SysMenuModule">
+<select id="selectMenuInModuleMune" parameterType="com.demo.po.SysMenuModule" resultType="com.demo.po.SysMenuModule">
 select * from sys_module_menu where sys_module_menu.menu_id=#{menu_id} and sys_module_menu.module_id=#{module_id}
 </select>
 
 
-<select id="selectModuleMenuByMenuIdRuturnOne"  parameterType="int" resultType="com.demo.entity.SysMenuModule">
+<select id="selectModuleMenuByMenuIdRuturnOne"  parameterType="int" resultType="com.demo.po.SysMenuModule">
 select * from sys_module_menu where sys_module_menu.module_id=#{id} limit 1
 </select>
 
 
-<update id="updateMenu" parameterType="com.demo.entity.SysMenu">
+<update id="updateMenu" parameterType="com.demo.po.SysMenu">
 update sys_menu set menu_name=#{menu_name},menu_english_name=#{menu_english_name},
             menu_url=#{menu_url},order_number=#{order_number},
               is_auth_check=#{is_auth_check},is_display=#{is_display},
@@ -97,7 +97,7 @@ update sys_menu set menu_name=#{menu_name},menu_english_name=#{menu_english_name
 </update>
 
 
-    <!-- <select id="findUser" resultType="com.demo.entity.User" parameterType="int">
+    <!-- <select id="findUser" resultType="com.demo.po.User" parameterType="int">
     
         SELECT * FROM user where user.id=#{id}
     </select> -->
